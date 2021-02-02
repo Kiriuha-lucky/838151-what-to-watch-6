@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Кирилл Мальцев](https://up.htmlacademy.ru/react/6/user/838151).
-* Наставник: `Неизвестно`.
+* Наставник: [Анатолий Новоселов] (https://htmlacademy.ru/profile/id1474615).
 
 ---
 
