@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const SignIn = () => {
+const NotFound = () => {
   return (
     <React.Fragment>
       <div className="user-page">
@@ -38,4 +38,4 @@ const SignIn = () => {
 };
 
 
-export default SignIn;
+export default NotFound;
