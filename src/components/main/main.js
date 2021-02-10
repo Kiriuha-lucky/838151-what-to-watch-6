@@ -1,14 +1,17 @@
 import React from 'react';
-import MovieCard from '../movie-card';
 import PropTypes from 'prop-types';
+import FilmsList from '../films-list';
+import {Link} from 'react-router-dom';
+
 
 const Main = (props) => {
-  const {movie} = props;
+  const {movie, films} = props;
+  console.log(films);
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={movie.background_image} alt={movie.name}/>
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header movie-card__head">
@@ -28,21 +31,21 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={movie.poster_image} alt={movie.name} width="218" height="327" />
             </div>
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{movie.title}</h2>
+              <h2 className="movie-card__title">{movie.name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{movie.genre}</span>
-                <span className="movie-card__year">{movie.year}</span>
+                <span className="movie-card__year">{movie.released}</span>
               </p>
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <Link to={`/player/${movie.id}`} className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
-                </button>
+                </Link>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -90,7 +93,7 @@ const Main = (props) => {
             </li>
           </ul>
           <div className="catalog__movies-list">
-            <MovieCard/>
+            <FilmsList films={films} />
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -114,7 +117,28 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        poster_image: PropTypes.string.isRequired,
+        preview_image: PropTypes.string.isRequired,
+        background_image: PropTypes.string.isRequired,
+        background_color: PropTypes.string.isRequired,
+        video_link: PropTypes.string.isRequired,
+        preview_video_link: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        scores_count: PropTypes.number.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.array.isRequired,
+        run_time: PropTypes.number.isRequired,
+        genre: PropTypes.string.isRequired,
+        released: PropTypes.number.isRequired,
+        is_favorite: PropTypes.bool.isRequired
+      })
+  ).isRequired
 };
 
 export default Main;

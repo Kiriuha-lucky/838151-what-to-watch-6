@@ -1,12 +1,19 @@
 import React from 'react';
+import FILMS from '../../mocks/films';
+import PropTypes from 'prop-types';
 
-const Player = () => {
+const Player = (props) => {
+  const goBack = () => {
+    return window.history.back();
+  };
+  const filmId = props.match.params.id;
+  const film = FILMS.filter((movie)=>movie.id == filmId)[0];
   return (
     <React.Fragment>
       <div className="player">
-        <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+        <video src="#" className="player__video" poster={film.poster_image}></video>
 
-        <button type="button" className="player__exit">Exit</button>
+        <button type="button" className="player__exit" onClick={goBack}>Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -41,3 +48,8 @@ const Player = () => {
 
 
 export default Player;
+
+Player.propTypes = {
+  film: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
+};
