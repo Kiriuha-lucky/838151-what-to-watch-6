@@ -131,6 +131,6 @@ const Film = (props) => {
 export default Film;
 
 Film.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: PropTypes.object,
   match: PropTypes.object.isRequired
 };

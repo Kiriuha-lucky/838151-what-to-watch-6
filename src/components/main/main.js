@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom';
 
 const Main = (props) => {
   const {movie, films} = props;
-  console.log(films);
   return (
     <React.Fragment>
       <section className="movie-card">
