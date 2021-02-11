@@ -7,11 +7,11 @@ const Player = (props) => {
     return window.history.back();
   };
   const filmId = props.match.params.id;
-  const film = FILMS.filter((movie)=>movie.id == filmId)[0];
+  const film = FILMS.filter((movie)=>movie.id === Number(filmId))[0];
   return (
     <React.Fragment>
       <div className="player">
-        <video src="#" className="player__video" poster={film.poster_image}></video>
+        <video src="#" className="player__video" poster={film.posterImage}></video>
 
         <button type="button" className="player__exit" onClick={goBack}>Exit</button>
 

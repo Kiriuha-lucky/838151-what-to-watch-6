@@ -10,7 +10,7 @@ const Main = (props) => {
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={movie.background_image} alt={movie.name}/>
+          <img src={movie.backgroundImage} alt={movie.name}/>
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header movie-card__head">
@@ -30,7 +30,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={movie.poster_image} alt={movie.name} width="218" height="327" />
+              <img src={movie.posterImage} alt={movie.name} width="218" height="327" />
             </div>
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{movie.name}</h2>
@@ -121,21 +121,21 @@ Main.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        poster_image: PropTypes.string.isRequired,
-        preview_image: PropTypes.string.isRequired,
-        background_image: PropTypes.string.isRequired,
-        background_color: PropTypes.string.isRequired,
-        video_link: PropTypes.string.isRequired,
-        preview_video_link: PropTypes.string.isRequired,
+        posterImage: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        backgroundImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
-        scores_count: PropTypes.number.isRequired,
+        scoresCount: PropTypes.number.isRequired,
         director: PropTypes.string.isRequired,
         starring: PropTypes.array.isRequired,
-        run_time: PropTypes.number.isRequired,
+        runTime: PropTypes.number.isRequired,
         genre: PropTypes.string.isRequired,
         released: PropTypes.number.isRequired,
-        is_favorite: PropTypes.bool.isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired
 };

@@ -20,7 +20,7 @@ const App = (props) => {
         <Route exact path="/films/:id?/review" component={AddReview} />
         <Route exact path="/films/:id?" component={Film} />
         <Route exact path="/mylist">
-          <MyList films={films.filter((film) => film.is_favorite)} />
+          <MyList films={films.filter((film) => film.isFavorite)} />
         </Route>
         <Route exact path="/player/:id?" component={Player}/>
         <Route exact path="/login">
@@ -40,21 +40,21 @@ App.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        poster_image: PropTypes.string.isRequired,
-        preview_image: PropTypes.string.isRequired,
-        background_image: PropTypes.string.isRequired,
-        background_color: PropTypes.string.isRequired,
-        video_link: PropTypes.string.isRequired,
-        preview_video_link: PropTypes.string.isRequired,
+        posterImage: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        backgroundImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
-        scores_count: PropTypes.number.isRequired,
+        scoresCount: PropTypes.number.isRequired,
         director: PropTypes.string.isRequired,
         starring: PropTypes.array.isRequired,
-        run_time: PropTypes.number.isRequired,
+        runTime: PropTypes.number.isRequired,
         genre: PropTypes.string.isRequired,
         released: PropTypes.number.isRequired,
-        is_favorite: PropTypes.bool.isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired
 };

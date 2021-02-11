@@ -5,19 +5,8 @@ import PropTypes from 'prop-types';
 import ReviewForm from '../review-form/review-form';
 
 const AddReview = (props) => {
-  const [reviewForm, setReviewForm] = React.useState({
-    rating: ``,
-    reviewtext: ``
-  });
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  };
-  const handleFieldChange = (evt) => {
-    const {name, value} = evt.target;
-    setReviewForm({...reviewForm, [name]: value});
-  };
   const filmId = props.match.params.id;
-  const film = FILMS.filter((movie)=>movie.id == filmId)[0];
+  const film = FILMS.filter((movie)=>movie.id === Number(filmId))[0];
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">

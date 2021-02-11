@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 
 const Film = (props) => {
   const filmId = props.match.params.id;
-  const film = FILMS.filter((movie)=>movie.id == filmId)[0];
+  const film = FILMS.filter((movie)=>movie.id === Number(filmId))[0];
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={film.background_image} alt={film.name} />
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -63,7 +63,7 @@ const Film = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={film.poster_image} alt={film.name} width="218" height="327" />
+              <img src={film.posterImage} alt={film.name} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -85,7 +85,7 @@ const Film = (props) => {
                 <div className="movie-rating__score">{film.rating}</div>
                 <p className="movie-rating__meta">
                   <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">{film.scores_count} ratings</span>
+                  <span className="movie-rating__count">{film.scoresCount} ratings</span>
                 </p>
               </div>
 
