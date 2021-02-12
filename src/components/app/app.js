@@ -14,14 +14,14 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/films/:id/review" render={(prop) => (
-          <AddReview {...prop} films={films}/>
+        <Route path="/films/:id/review" render={(routerProps) => (
+          <AddReview {...routerProps} films={films}/>
         )}/>
-        <Route path="/films/:id" render={(prop) => (
-          <Film {...prop} films={films}/>
+        <Route path="/films/:id" render={(routerProps) => (
+          <Film {...routerProps} films={films}/>
         )}/>
-        <Route path="/player/:id?" render={(prop) => (
-          <Player {...prop} films={films}/>
+        <Route path="/player/:id" render={(routerProps) => (
+          <Player {...routerProps} films={films}/>
         )}/>
         <Route exact path="/">
           <Main movie={movie} films={films} />
