@@ -14,15 +14,21 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/films/:id/review" render={(prop) => (
+          <AddReview {...prop} films={films}/>
+        )}/>
+        <Route path="/films/:id" render={(prop) => (
+          <Film {...prop} films={films}/>
+        )}/>
+        <Route path="/player/:id?" render={(prop) => (
+          <Player {...prop} films={films}/>
+        )}/>
         <Route exact path="/">
           <Main movie={movie} films={films} />
         </Route>
-        <Route exact path="/films/:id?/review" component={AddReview} />
-        <Route exact path="/films/:id?" component={Film} />
         <Route exact path="/mylist">
           <MyList films={films.filter((film) => film.isFavorite)} />
         </Route>
-        <Route exact path="/player/:id?" component={Player}/>
         <Route exact path="/login">
           <SignIn />
         </Route>

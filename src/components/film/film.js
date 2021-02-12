@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import FILMS from '../../mocks/films';
 import FilmsList from '../films-list';
 import PropTypes from 'prop-types';
 
 const Film = (props) => {
+  const {films} = props;
   const filmId = props.match.params.id;
-  const film = FILMS.filter((movie)=>movie.id === Number(filmId))[0];
+  const film = films.filter((movie)=>movie.id === Number(filmId))[0];
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -106,7 +106,7 @@ const Film = (props) => {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__movies-list">
-            <FilmsList films={FILMS.filter((movie)=>movie.genre === film.genre).slice(0, 4)} />
+            <FilmsList films={films.filter((movie)=>movie.genre === film.genre).slice(0, 4)} />
           </div>
         </section>
 
@@ -132,5 +132,26 @@ export default Film;
 
 Film.propTypes = {
   film: PropTypes.object,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        posterImage: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        backgroundImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        scoresCount: PropTypes.number.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.array.isRequired,
+        runTime: PropTypes.number.isRequired,
+        genre: PropTypes.string.isRequired,
+        released: PropTypes.number.isRequired,
+        isFavorite: PropTypes.bool.isRequired,
+      }),
+  ).isRequired,
 };
