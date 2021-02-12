@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
-const MovieCard = (props) => {
+const FilmCard = (props) => {
   const {id, name, posterImage, onMouseEnter} = props;
   return (
     <article key={id} className="small-movie-card catalog__movies-card" onMouseEnter={onMouseEnter}>
@@ -16,9 +16,9 @@ const MovieCard = (props) => {
     </article>);
 };
 
-export default MovieCard;
+export default FilmCard;
 
-MovieCard.propTypes = {
+FilmCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   posterImage: PropTypes.string.isRequired,
