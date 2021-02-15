@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Player = () => {
+const Player = (props) => {
+  const goBack = () => {
+    return window.history.back();
+  };
+  const filmId = props.match.params.id;
+  const {films} = props;
+  const film = films.filter((movie)=>movie.id === Number(filmId))[0];
   return (
     <React.Fragment>
       <div className="player">
-        <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+        <video src="#" className="player__video" poster={film.posterImage}></video>
 
-        <button type="button" className="player__exit">Exit</button>
+        <button type="button" className="player__exit" onClick={goBack}>Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -41,3 +48,29 @@ const Player = () => {
 
 
 export default Player;
+
+Player.propTypes = {
+  film: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        posterImage: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        backgroundImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        scoresCount: PropTypes.number.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.array.isRequired,
+        runTime: PropTypes.number.isRequired,
+        genre: PropTypes.string.isRequired,
+        released: PropTypes.number.isRequired,
+        isFavorite: PropTypes.bool.isRequired,
+      }),
+  ).isRequired,
+};

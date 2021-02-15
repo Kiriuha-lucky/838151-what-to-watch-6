@@ -10,24 +10,24 @@ import SignIn from '../sign-in/sign-in';
 import NotFound from '../not-found/not-found';
 
 const App = (props) => {
-  const {movie} = props;
+  const {movie, films} = props;
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/films/:id/review" render={(routerProps) => (
+          <AddReview {...routerProps} films={films}/>
+        )}/>
+        <Route path="/films/:id" render={(routerProps) => (
+          <Film {...routerProps} films={films}/>
+        )}/>
+        <Route path="/player/:id" render={(routerProps) => (
+          <Player {...routerProps} films={films}/>
+        )}/>
         <Route exact path="/">
-          <Main movie={movie} />
-        </Route>
-        <Route exact path="/films/:id?/review">
-          <AddReview />
-        </Route>
-        <Route exact path="/films/:id?">
-          <Film />
+          <Main movie={movie} films={films} />
         </Route>
         <Route exact path="/mylist">
-          <MyList />
-        </Route>
-        <Route exact path="/player/:id?">
-          <Player />
+          <MyList films={films.filter((film) => film.isFavorite)} />
         </Route>
         <Route exact path="/login">
           <SignIn />
@@ -41,7 +41,28 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        posterImage: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        backgroundImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        scoresCount: PropTypes.number.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.array.isRequired,
+        runTime: PropTypes.number.isRequired,
+        genre: PropTypes.string.isRequired,
+        released: PropTypes.number.isRequired,
+        isFavorite: PropTypes.bool.isRequired
+      })
+  ).isRequired
 };
 
 export default App;
